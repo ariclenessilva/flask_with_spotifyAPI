@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css" crossorigin="anonymous">
+
+
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+</head>
+
+<body>
+	<div style="padding-bottom: 150px;"><a class="btn btn-primary" href="/home" style="top: 5%;left: 2%;position: absolute">Go back to HOMEPAGE</a></div>
+	<div style="top: 5%;left: 42%;position: absolute">#Gets all user info, including id's of albums, playlists</div>
+	<p></p>
+	<div>
+		
+	<table id="example" class="display" cellspacing="0" width="100%">
+	  <thead>
+		<tr>
+		  <th scope="col">ID</th>
+		  <th scope="col">Username</th>
+		  <th scope="col">Password</th>
+		  <th scope="col">Albums</th>
+		   <th scope="col">Playlists</th>
+		</tr>
+	  </thead>
+	  <tfoot>
+		<tr>
+		  <th scope="col">ID</th>
+		  <th scope="col">Username</th>
+		  <th scope="col">Password</th>
+		  <th scope="col">Albums</th>
+		   <th scope="col">Playlists</th>
+		</tr>
+	  </tfoot>
+	  <tbody>
+		  {% if album_list %}
+			{% for segment in album_list %}
+		  		{% if segment.id==album_id %}
+				<tr>
+					<th>{{segment.id}}</th>
+				  <th>{{segment.username}}</th>
+				  <th>{{segment.password}}</th>
+				  <th>{{segment.album_id}}</th>
+				   <th>{{segment.playlist_id}}</th>
+				</tr>
+		  		{% endif %}
+			  {% endfor %}
+		   {% endif %}
+	  </tbody>
+	</table>
+
+	<script>
+		$(document).ready(function() {
+  var table = $('#example').DataTable();
+
+			function download(text, name, type) {
+  var a = document.getElementById("a");
+  var file = new Blob([text], {type: type});
+  a.href = URL.createObjectURL(file);
+  a.download = name;
+}
+
+  $('#example tbody').on('click', 'tr', function() {
+	$(this).toggleClass('selected');
+  });
+
+  $('#button').click(function() {
+	var ids = $.map(table.rows('.selected').data(), function(item) {
+	  return item[0]
+	});
+	console.log(ids)
+		  });
+		});
+		</script>
+		
+	<div style="padding-top: 50px;">All the albums of the user</div>
+	<table id="example2" class="display" cellspacing="0" width="100%">
+	  <thead>
+		<tr>
+		  <th scope="col">ID</th>
+		  <th scope="col">Album</th>
+		  <th scope="col">Artist</th>
+		  <th scope="col">Year released</th>
+		   <th scope="col">Total Track</th>
+		</tr>
+	  </thead>
+	  <tfoot>
+		<tr>
+		  <th scope="col">ID</th>
+		  <th scope="col">Album</th>
+		  <th scope="col">Artist</th>
+		  <th scope="col">Year released</th>
+		   <th scope="col">Total Track</th>
+		</tr>
+	  </tfoot>
+	  <tbody>
+		  {% if album_list %}
+			{% for segment in album_list2 %}
+					<tr>
+						<th>{{segment.id}}</th>
+					  <th>{{segment.album_id}}</th>
+					  <th>{{segment.name}}</th>
+					  <th>{{segment.release_date}}</th>
+					   <th>{{segment.total_track}}</th>
+					</tr>
+			  {% endfor %}
+		   {% endif %}
+	  </tbody>
+	</table>
+
+	<script>
+		$(document).ready(function() {
+  var table = $('#example2').DataTable();
+
+			function download(text, name, type) {
+  var a = document.getElementById("a");
+  var file = new Blob([text], {type: type});
+  a.href = URL.createObjectURL(file);
+  a.download = name;
+}
+
+  $('#example2 tbody').on('click', 'tr', function() {
+	$(this).toggleClass('selected');
+  });
+
+  $('#button').click(function() {
+	var ids = $.map(table.rows('.selected').data(), function(item) {
+	  return item[0]
+	});
+	console.log(ids)
+		  });
+		});
+		</script>
+		
+		<div style="padding-top: 50px;">All the playlists of the user</div>
+		<table id="example3" class="display" cellspacing="0" width="100%">
+	  <thead>
+		<tr>
+		  <th scope="col">ID</th>
+		  <th scope="col">Title</th>
+		  <th scope="col">List of songs</th>
+		</tr>
+	  </thead>
+	  <tfoot>
+		<tr>
+		  <th scope="col">ID</th>
+		  <th scope="col">Title</th>
+		  <th scope="col">List of songs</th>
+		</tr>
+	  </tfoot>
+	  <tbody>
+	  	{% if album_list %}
+			{% for segment in album_list3 %}
+				<tr>
+					<th>{{segment.id}}</th>
+				  <th>{{segment.name}}</th>
+					<th>1</th>
+				<!--  <th>{{segment.list_songs}}</th> -->
+				</tr>
+			  {% endfor %}
+		   {% endif %}
+	  </tbody>
+	</table>
+
+	<script>
+		$(document).ready(function() {
+  var table = $('#example3').DataTable();
+
+			function download(text, name, type) {
+  var a = document.getElementById("a");
+  var file = new Blob([text], {type: type});
+  a.href = URL.createObjectURL(file);
+  a.download = name;
+}
+
+ 
+  $('#example3 tbody').on('click', 'tr', function() {
+	$(this).toggleClass('selected');
+  });
+
+  $('#button').click(function() {
+	var ids = $.map(table.rows('.selected').data(), function(item) {
+	  return item[0]
+	});
+	console.log(ids)
+		  });
+		});
+		</script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Home Page</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="navbar bg-primary navbar-light justify-content-between">
+	  <a class="navbar-brand">Welcome to our application, <font size="5" color="red">{{ username }}</font></a>
+	  <form class="form-inline">
+		<a href="/logout" class="btn btn-outline-success my-2 my-sm-0" type="submit">{{login_logout}}</a>
+	  </form>
+	</nav>
+	<div style="position: absolute; top: 20%;left: 42%;">Module 4 homework</div>
+
+	<div class="btn-group" style="position: absolute; top: 35%;left: 35%;">
+	  <!-- Basic dropdown -->
+	  <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true"
+		aria-expanded="false">Get</button>
+	  <div class="dropdown-menu">
+		<a class="dropdown-item" href="/GET/albums">GET/albums</a>
+		  <a class="dropdown-item" href="GET/albums/{id}">GET/albums/{id}</a>
+		  <a class="dropdown-item" href="/get_albums">GET/albums/query/{id}</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="/GET/users">GET/users/</a>
+		  <a class="dropdown-item" href="/GET/users/{id}">GET/users/{id}</a>
+		  <a class="dropdown-item" href="/GET/users/{id}/albums">GET/users/{id}/albums</a>
+		  <a class="dropdown-item" href="/GET/users/{id}/playlists">GET/users/{id}/playlists</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="/GET/playlists">GET/playlists</a>
+		  <a class="dropdown-item" href="/GET/playlists/{id}">GET/playlists/{id}</a>
+		  <a class="dropdown-item" href="/GET/playlists/query/{id}">GET/playlists/query/{id}</a>
+	  </div>
+	  <!-- Basic dropdown -->
+
+	  <!--Dropdown primary-->
+	  <div class="dropdown">
+		<!--Trigger-->
+		<button class="btn btn-primary dropdown-toggle mr-4" type="button" id="dropdownMenu1" data-toggle="dropdown"
+		  aria-haspopup="true" aria-expanded="false">DELETE</button>
+		<!--Menu-->
+		<div class="dropdown-menu dropdown-primary">
+		  <a class="dropdown-item" href="/DELETE/users/{id}">DELETE/users/{id}</a>
+			<div class="dropdown-divider"></div>
+		  <a class="dropdown-item" href="/DELETE/playlists/{id}">DELETE/playlists/{id}</a>
+			<div class="dropdown-divider"></div>
+		  <a class="dropdown-item" href="/DELETE/albums/{id}">DELETE/albums/{id}</a>
+		</div>
+	  </div>
+	  <!--/Dropdown primary-->
+		<div class="dropdown">
+		<!--Trigger-->
+		<button class="btn btn-primary dropdown-toggle mr-4" type="button" id="dropdownMenu2" data-toggle="dropdown"
+		  aria-haspopup="true" aria-expanded="false">PUT</button>
+		<!--Menu-->
+		<div class="dropdown-menu dropdown-primary">
+		  <a class="dropdown-item" href="/PUT/playlists/{id}">PUT/playlists/{id}</a>
+		  <a class="dropdown-item" href="/PUT/playlists/query/{id}/{idx}">PUT/playlists/query/{id}/{idx}</a>
+		</div>
+	  </div>
+		<!-- ############################################################# -->
+		<div class="dropdown">
+		<!--Trigger-->
+		<button class="btn btn-primary dropdown-toggle mr-4" type="button" id="dropdownMenu3" data-toggle="dropdown"
+		  aria-haspopup="true" aria-expanded="false">POST</button>
+		<!--Menu-->
+		<div class="dropdown-menu dropdown-primary">
+		  <a class="dropdown-item" href="/POST/albums">POST/albums</a>
+			<div class="dropdown-divider"></div>
+		  <a class="dropdown-item" href="/POST/playlists">POST/playlists</a>
+			<div class="dropdown-divider"></div>
+<!--		  <a class="dropdown-item" href="#">User/{id}/token</a> -->
+		  <a class="dropdown-item" href="/POST/users">POST/users</a>
+		</div>
+	  </div>
+		<!-- ############################################################# -->
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

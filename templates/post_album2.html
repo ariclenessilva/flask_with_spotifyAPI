@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css" crossorigin="anonymous">
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+</head>
+<body>
+	
+<div style="padding-bottom: 250px;"><a class="btn btn-primary" href="/home" style="top: 5%;left: 2%;position: absolute">Go back to HOMEPAGE</a></div>
+<div style="top: 5%;left: 42%;position: absolute">Look for your albums on SPOTIFY</div>
+<div  style="top: 15%;width: 70%;left: 10%;position: absolute"><form method='POST' enctype='multipart/form-data'><input class="form-control" name="post_albums" type="text"><br><input class="btn btn-primary" type="submit" value="Submit"> </form></div>
+
+<div>
+<table id="example" class="display" cellspacing="0" width="100%">
+	  <thead>
+		<tr>
+		  <th scope="col">ID</th>
+		  <th scope="col">Album</th>
+		  <th scope="col">Artist</th>
+		  <th scope="col">Year released</th>
+		   <th scope="col">Total Track</th>
+		</tr>
+	  </thead>
+	  <tfoot>
+		<tr>
+		  <th scope="col">ID</th>
+		  <th scope="col">Album</th>
+		  <th scope="col">Artist</th>
+		  <th scope="col">Year released</th>
+		   <th scope="col">Total Track</th>
+		</tr>
+	  </tfoot>
+	  <tbody>
+		  {% for i in final_result_spotify %}
+		  <tr>
+			  <th>{{ i[0] }}</th>
+			  <th>{{ i[1] }}</th>
+			  <th>{{ i[2] }}</th>
+			  <th>{{ i[3] }}</th>
+			   <th>{{ i[4] }}</th>
+			 </tr>
+		  {% endfor %}
+	</tbody>
+		</table>
+
+		<script>
+		var all_selected="";
+			$(document).ready(function() {
+	  var table = $('#example').DataTable();
+
+	  $('#example tbody').on('click', 'tr', function() {
+		$(this).toggleClass('selected');
+	  });
+
+	  $('#button').click(function() {
+		var ids = $.map(table.rows('.selected').data(), function(item) {
+		  return item[0]
+		});
+		console.log(ids)
+		var i;
+
+		  for (i = 0; i < table.rows('.selected').data().length; i++) { 
+			  all_selected+=table.rows('.selected').data()[i][0]+',';
+			  all_selected+=table.rows('.selected').data()[i][1]+',';
+			  all_selected+=table.rows('.selected').data()[i][2]+',';
+			  all_selected+=table.rows('.selected').data()[i][3]+',';
+			  all_selected+=table.rows('.selected').data()[i][4]+'/';
+		  } 
+		 document.getElementById("s_a").defaultValue = all_selected;
+		  });
+			});
+			</script>
+	</body>
+	</html>
